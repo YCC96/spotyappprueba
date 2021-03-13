@@ -55,8 +55,8 @@ export class SpotifyService {
       });
       var body = new HttpParams()
                       .set('grant_type', 'client_credentials')
-                      .set('client_id', 'ba0acc4997bd4f749c23f6aff4ff4638')
-                      .set('client_secret', '26768ddc1c96490db2c13c8358d8ed4b');
+                      .set('client_id', 'xxxx')
+                      .set('client_secret', 'xxxxxx');
 
       this._http.post(url, body, { headers }).subscribe((data: any) => {
         console.log('*_* get token: ', data);
