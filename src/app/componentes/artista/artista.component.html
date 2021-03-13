@@ -1,0 +1,54 @@
+<app-loanding *ngIf="banLanding"></app-loanding>
+
+<div *ngIf="!banLanding" class="row">
+  <div class="col-2">
+    <img [src]="artista.images | noimagen" alt="imagen" class="img-thumbnail img- circle">
+  </div>
+  <div class="col">
+    <h3>{{ artista.name }}</h3>
+    <p>
+      <a [href]="artista.external_urls.spotify">
+        Ir a la página del artista
+      </a>
+    </p>
+  </div>
+  <div class="col-4">
+    <button class="btn btn-outline-danger" (click)="goBack()">
+      Regresar
+    </button>
+  </div>
+</div>
+
+<br>
+<br>
+<div class="row">
+  <div class="col">
+
+    <table class="table" style="color: white;">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Album</th>
+          <th>Canción</th>
+          <th>Vista previa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let track of topTracks">
+          <td>
+            <img [src]="track.album.images | noimagen" alt="imagen" class="img-thumb">
+          </td>
+          <td>{{ track.album.name }}</td>
+          <td>{{ track.name }}</td>
+          <td>
+            <!--
+              <audio [src]="track.preview_url" controls></audio>
+            -->
+            <iframe [src]="track.album.id | domseguro:'https://open.spotify.com/embed/album/'" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" title="music"></iframe>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

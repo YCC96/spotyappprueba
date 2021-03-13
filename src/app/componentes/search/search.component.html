@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+    <input class="form-control" #inpBuscar (keyup)="buscar(inpBuscar.value)" type="text" placeholder="Buscar artista">
+  </div>
+</div>
+
+<br>
+<app-loanding *ngIf="banLoading"></app-loanding>
+
+<div *ngIf="!banLoading" class="card-columns">
+
+  <div class="card puntero" *ngFor="let artista of artistas" (click)="verArtista(artista)">
+    <img [src]="artista.images | noimagen" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ artista.name }}</h5>
+      <p class="card-text">
+        <span *ngFor="let genero of artista.genres" class="badge badge-primary">{{ genero }}</span>
+      </p>
+    </div>
+  </div>
+
+</div>

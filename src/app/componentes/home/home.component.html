@@ -1,0 +1,23 @@
+<app-loanding *ngIf="banLoading"></app-loanding>
+
+<div *ngIf="banAlert" class="alert alert-danger" role="alert">
+  <h3>Error</h3>
+  <p>{{ messageAlert }}</p>
+</div>
+
+<div *ngIf="!banLoading">
+  <h2>Nuevos lanzamientos</h2>
+  <hr style="border: 2px solid white;">
+  <div class="card-columns">
+    <div class="card puntero" *ngFor="let cancion of nuevasCanciones" (click)="verArtista(cancion)">
+      <img [src]="cancion.images | noimagen" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ cancion.name }}</h5>
+        <p class="card-text">
+          <span *ngFor="let artista of cancion.artists" class="badge badge-primary">{{ artista.name }}</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
